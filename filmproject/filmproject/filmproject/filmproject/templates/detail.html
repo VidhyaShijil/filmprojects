@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container mt-5" >
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{getmovie.img.url}}"width="300" height="300">
+        </div>
+<div class="col-md-6">
+     <h2>{{getmovie.name}}</h2>
+     <h4>{{getmovie.desc}}</h4>
+     <h6>{{getmovie.year}}</h6>
+     <h6>{{getmovie.date}}</h6>
+     <h6>{{getmovie.actor}}</h6>
+     <h6>{{getmovie.category}}</h6>
+     <h6><a href="{{getmovie.link}}" target="_blank">Trailer link</h6></a></h6>
+     <!-- <a class="btn btn-warning" href="{% url 'update' getmovie.id %}">update</a>
+     <a class="btn btn-danger" href="{% url 'delete' getmovie.id %}">delete</a> -->
+     <div>
+        <h1>Post a Review</h1>
+        <form action="{% url 'post_review' getmovie.id %}" method="post">
+            {% csrf_token %}
+            <label for="description">Review Description:</label><br>
+            <textarea id="description" name="description" rows="4" cols="50"></textarea><br>
+            <label for="stars">Stars:</label>
+            <select id="stars" name="stars">
+                <option value="1">1 Star</option>
+                <option value="2">2 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="5">5 Stars</option>
+            </select><br><br>
+            <input type="submit" value="Submit Review">
+        </form>
+     </div>
+     <div>
+        <h1>Review List</h1>
+        <ul>
+            {% for review in reviews %}
+            <li>{{ review.description }} - {{ review.stars }} stars</li>
+            {% endfor %}
+        </ul>
+     </div>
+</div>
+    </div>
+</div>
+
+{% endblock %}

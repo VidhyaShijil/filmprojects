@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Film Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your film name">
+                </div>
+                <div class="form-group">
+                    <label for="desc">Description:</label>
+                    <input type="text" class="form-control" id="desc" name="desc" placeholder="Enter your film description">
+                </div>
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <input type="text" class="form-control" id="year" name="year" placeholder="Enter your film year">
+                </div>
+                <div class="form-group">
+                    <label for="actor">Actor:</label>
+                    <input type="text" class="form-control" id="actor" name="actor" placeholder="Enter actor">
+                </div>
+                <div class="form-group">
+                    <label for="date">Release Date:</label>
+                    <input type="date" class="form-control" id="date" name="date" placeholder="Enter date">
+                </div>
+                <div class="form-group">
+                    <label for="link">Trailer Link:</label>
+                    <input type="text" class="form-control" id="link" name="link" placeholder="Enter trailer link">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select class="form-control" id="category" name="category">
+                        <option value="comedy">Comedy</option>
+                        <option value="family">Family</option>
+                        <option value="action">Action</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="img">Image:</label>
+                    <input type="file" class="form-control-file" id="img" name="img">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
